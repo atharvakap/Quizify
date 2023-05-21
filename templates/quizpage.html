@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Quiz</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets2/css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="{% static 'assets2/css/animate.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets2/css/fontawesome-all.css' %}">
+	<link rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
+
+	<link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+	<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+</head>
+
+<style>
+	.scoreArea {
+	    display: none;
+    }
+</style>
+
+	<body>
+
+<!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="{% static 'assets/img/logo.png' %}" alt="">
+        <span>Quizify</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Sign Up</a></li>
+          <li><a class="getstarted scrollto" href="/login">{% block msg %}Welcome {{request.user}}{% endblock msg %}</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+		  <div class="container">
+
+			<ol>
+			  <li><a href="index.html">Home</a></li>
+			  <li>Quiz category</li>
+			</ol>
+			<h2>Quiz category</h2>
+
+		  </div>
+		</section><!-- End Breadcrumbs -->
+
+		<div class="wrapper position-relative">
+			<div class="wizard-content-1 clearfix">
+				<div class="steps d-inline-block position-absolute clearfix">
+					<ul class="tablist multisteps-form__progress">
+						<li class="multisteps-form__progress-btn js-active current"></li>
+						<li class="multisteps-form__progress-btn "></li>
+						<li class="multisteps-form__progress-btn"></li>
+						<li class="multisteps-form__progress-btn"></li>
+						<li class="multisteps-form__progress-btn"></li>
+					</ul>
+				</div>
+
+				<div class="step-inner-content clearfix position-relative">
+					<form class="multisteps-form__form" action="/score" id="wizard" method="POST">
+						{% csrf_token %}
+						<div class="form-area position-relative">
+							<div class="multisteps-form__panel  js-active" data-animation="fadeIn">
+								<div class="clearfix position-relative" id="app" style="padding: 0px, 30px">
+									<div class="quiz-title text-center">
+										<span>Question</span>
+										<h2 class="question"></h2>
+									</div>
+									<div class="quiz-option-selector clearfix" style="padding-bottom: 40px">
+										<ul>
+											<li>
+												<label class="start-quiz-item" for="ans1">
+													<input id="ans1" type="radio" name="quiz" value="Email Markering" class="exp-option-box answer">
+													<span class="exp-number text-uppercase">A</span>
+													<span class="exp-label" id="option1">opt</span>
+													<span class="checkmark-border" id="cb"></span>
+												</label>
+											</li>
+											<li>
+												<label for="ans2">
+													<input id="ans2" type="radio" name="quiz" value="Font Developer" class="exp-option-box answer">
+													<span class="exp-number text-uppercase">b</span>
+													<span class="exp-label" id="option2">opt</span>
+													<span class="checkmark-border" id="cb"></span>
+												</label>
+											</li>
+											<li>
+												<label for="ans3">
+													<input id="ans3" type="radio" name="quiz" value="Digital Marketing" class="exp-option-box answer">
+													<span class="exp-number text-uppercase">c</span>
+													<span class="exp-label" id="option3">opt</span>
+													<span class="checkmark-border" id="cb"></span>
+												</label>
+											</li>
+											<li>
+												<label for="ans4">
+													<input id="ans4" type="radio" name="quiz" value="SEO" class="exp-option-box answer">
+													<span class="exp-number text-uppercase">d</span>
+													<span class="exp-label" id="option4">opt </span>
+													<span class="checkmark-border" id="cb"></span>
+												</label>
+											</li>
+										</ul>
+									</div>
+									<div class="bottom-vector">
+										<img src="{% static 'assets/img/bq1.png' %}" alt="">
+									</div>
+<!--									<div class="quiz-progress-area">-->
+<!--										<div class="progress">-->
+<!--											<div class="progress-bar position-relative" style="width: 20%">-->
+<!--												<span>24% complete, keep it up!</span>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+									<div class="alert alert-primary" style="margin-right: 20px; margin-left: 20px; padding-bottom: 30px">
+<!--										<ul>-->
+<!--											<li class="d-none"><span class="js-btn-next" title="PREV">Previous Question</span></li>-->
+<!--											<li><span class="js-btn-next" title="NEXT">Next Question</span></li>-->
+<!--										</ul>-->
+										<button type="button" class="btn secondary btn-lg" id="submit">Next</button>
+										<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+									</div>
+									<div class="alert alert-danger" style="margin-right: 20px; margin-left: 20px; margin-bottom: 30px">
+										<div id="showScore" class="showArea"><h5>Your score will be displayed here!</h5></div>
+									</div>
+								</div>
+							</div>
+							<!-- step 1 -->
+
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12 text-center">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+          </div>
+          <div class="col-lg-6">
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-5 col-md-12 footer-info">
+            <a href="/index" class="logo d-flex align-items-center">
+              <img src="{% static 'assets/img/logo.png' %}" alt="">
+              <span>Quizify</span>
+            </a>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+            <h4>Contact Us</h4>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Quizify</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+        Designed by <a href="https://www.linkedin.com/in/atharvakap99/?originalSubdomain=in">Atharva Kapile</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+		<script src="{% static 'assets2/js/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'assets2/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'assets2/js/popper.min.js' %}"></script>
+		<script src="{% static 'assets2/js/owl.carousel.min.js' %}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+		<script src="{% static 'assets2/js/form-step.js' %}"></script>
+		<script src="{% static 'assets2/js/jquery.validate.min.js' %}"></script>
+		<script src="{% static 'assets2/js/main.js' %}"></script>
+		<script src="{% static 'assets2/js/switch.js' %}"></script>
+
+
+		<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+ 		<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+		<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+		<!-- Template Main JS File -->
+		<script src="{% static 'assets/js/main.js' %}"></script>
+
+	<script src="{% static 'assets/js/options.js' %}"></script>
+	<script>
+		const changeC = () => {
+		    document.getElementById('cb').style.background-image = 'linear-gradient(14deg, #013289 0%, #4154f1 100%)';
+		};
+	</script>
+
+	</body>
+
+	</html>

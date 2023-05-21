@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Score{% endblock title %}
+{% block msg %}Welcome {{request.user}} {% endblock msg %}
+{% block action %}/logoutuser{% endblock action %}
+
+{% block body %}
+
+<!-- ======= Breadcrumbs ======= -->
+		<section class="breadcrumbs">
+		  <div class="container">
+
+			<ol>
+			  <li><a href="index.html">Home</a></li>
+			  <li>Quiz category</li>
+			</ol>
+			<h2>Quiz category</h2>
+
+		  </div>
+		</section><!-- End Breadcrumbs -->
+
+        <div class="quiz-title text-center" style="margin-top: 70px; margin-bottom: 70px">
+            <span>{{request.user}} Thank you for taking the quiz</span>
+        </div>
+
+		<script src="{% static 'assets/js/options.js' %}"></script>
+
+{% endblock body %}
